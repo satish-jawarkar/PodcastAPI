@@ -1,10 +1,12 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-function Signup() {
+function SignUp() {
     const [formData, setFormData] = useState({username : '', email : '', password : ''});
     const[msg, setMsg] = useState('');
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name] : e.target.value});
@@ -12,8 +14,9 @@ function Signup() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            const response = await axios.post('http://localhost://1000/signup', formData);
+            const response = await axios.post('http://localhost:1000/signup', formData);
             setMsg(response.data.message);
+            navigate('/signin');
         }
         catch(e){
             console.log(`Error ${e}`);
@@ -32,4 +35,4 @@ function Signup() {
   )
 }
 
-export default Signup
+export default SignUp
