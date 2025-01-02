@@ -13,7 +13,7 @@ function Signup() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        JSON.stringify(formData);
+        // JSON.stringify(formData);
         console.log("Form Data:", formData);
         try{
             
@@ -23,12 +23,27 @@ function Signup() {
             setMsg(response.data.message);
             // console.log(response.status);
             console.log(msg);
-            navigate('/signin');
+            navigate('/signin1');
         }
         catch(e){
             console.log(`Error 1 ${e.message}`);
         }
     }
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     console.log("Form Data:", formData);
+    //     try {
+    //         const response = await axios.post('http://localhost:1000/signup', formData, {
+    //             headers: { 'Content-Type': 'application/json' }
+    //         });
+    //         setMsg(response.data.message); // Display message
+    //         console.log(response.data.message);
+    //         navigate('/signin1');
+    //     } catch (e) {
+    //         console.log('Error Details:', e.response?.data || e.message);
+    //         setMsg(e.response?.data.message || 'An error occurred!');
+    //     }
+    // }
   return (
     <div className='signup'>
         <form onSubmit={handleSubmit}>

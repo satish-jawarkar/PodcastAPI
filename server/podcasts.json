@@ -1,5 +1,4 @@
-{
-    "podcasts": [
+[
     {
         "name": "Brain Sparks",
         "description": "This podcast is hosted by usability and UI design expert, Jared Spool. It offers tona of value with many industry leaders sharing insights on usability, UX design, and UI design.",
@@ -853,5 +852,5 @@
         "itunes": "https://itunes.apple.com/us/podcast/working-file/id1095159618",
         "soundcloud": "https://soundcloud.com/workingfile",
         "rss": "http://feed.workingfile.co/workingfile"
-    }]
-}
+    }
+]

@@ -24,41 +24,60 @@ function Home() {
     const [selectedGenre, setSelectedGenre] = useState('');
     const [podcasts, setPodcasts] = useState([]);
 
-    useEffect(() => {
-        axios.get('linkk')
-        .then((req, res) => {
-            res.json();
-        })
-        .then((data) => {
-            setPodcasts(data);
-        })
-        .catch((e) => {
-            console.log(`error ${e}`);
-        })
-    }, [selectedGenre]);
-
-    const handleChange = (e) => {
-        e.preventDefault();
-        setSelectedGenre(e.target.value);
-    }
-
     const handleSubmit = () => {
+        if(selectedGenre){
+            const selectedValues = Array.isArray(selectedGenre) 
+                ? selectedGenre.map(option => option.value) 
+                : [selectedGenre.value];
 
+            axios.get(`http://localhost:1000/podcasts?category=${selectedGenre.value}`, { params: { category: selectedValues }})
+            .then((res) => {    
+                setPodcasts(res.data);
+                console.log('success')
+            })
+            .catch((e) => {
+                console.log(`Are ${e}`)
+            })
+        }
     }
+
+    const handleChange = (selectedOption) => {
+        // e.preventDefault();
+        setSelectedGenre(selectedOption);
+    }
+
   return (
     <div className='homepage'>
         <div className='search-bar'>
-        <Select options={genre} isMulti onChange={handleChange}/>
+        <Select options={genre} isMulti={true} onChange={handleChange}/>
         <button onClick={handleSubmit}> Search </button>
-        </div>
+    </div>
+    
+    <div className='podcastContent'>
+        <ul>
+            {podcasts.length > 0 ? (
+                podcasts.map((podcast) => (
+                    <li key={podcast._id}>
+                        <h3>{podcast.name}</h3>
+                        <p>{podcast.description}</p>
+                        <p><strong>Category:</strong> {podcast.category}</p>
+                        <a href={podcast.source} target="_blank" rel="noopener noreferrer">Listen Now</a>
+                    </li>
+                ))
+            ) : (
+                <li>No genres selected</li>
+            )}
+        </ul>
+    </div>
 
-        <div className='podcastContent'>
+
+        {/* <div className='podcastContent'>
             <ul>
                 {
                     (podcasts.length > 0) 
                     ? 
                     (podcasts.map((genre) => (
-                        <li key={genre.value}> {genre.label} </li>
+                        <li> {genre.name} </li>
                     )))
                     :
                     (
@@ -66,7 +85,7 @@ function Home() {
                     )
                 }
             </ul>
-        </div>
+        </div> */}
 
     </div>
   )

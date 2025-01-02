@@ -13,17 +13,29 @@ function SignIn ({setIsLoggedIn}) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        try{
-            const response = await axios.post('http://localhost:1000/signin', formData);
-            if(response.status === 200){
+        console.log("Form Data:", formData);
+    
+        try {
+            const response = await axios.post('http://localhost:1000/signin', formData, {
+                headers: { 'Content-Type': 'application/json' }
+            });
+            console.log("Response Status:", response.status);
+            console.log("Response Data:", response.data);
+    
+            if (response.status === 200) {
                 setIsLoggedIn(true);
                 navigate('/home');
             }
-        }
-        catch(err){
-            console.log(`Unexpected ${err}`);
+        } catch (err) {
+            if (err.response) {
+                console.log("Error Response Data:", err.response.data);
+                console.log("Error Status:", err.response.status);
+            } else {
+                console.log("Error:", err.message);
+            }
         }
     };
+    
   return (
     <div className='SignIn'>
         <form onSubmit={handleSubmit}>
