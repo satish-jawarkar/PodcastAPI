@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-function SignUp() {
+function Signup() {
     const [formData, setFormData] = useState({username : '', email : '', password : ''});
     const[msg, setMsg] = useState('');
     const navigate = useNavigate();
@@ -13,21 +13,28 @@ function SignUp() {
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
+        JSON.stringify(formData);
+        console.log("Form Data:", formData);
         try{
-            const response = await axios.post('http://localhost:1000/signup', formData);
+            
+            const response = await axios.post('http://localhost:1000/signup', formData, {
+                headers: { 'Content-Type': 'application/json' }
+            });
             setMsg(response.data.message);
+            // console.log(response.status);
+            console.log(msg);
             navigate('/signin');
         }
         catch(e){
-            console.log(`Error ${e}`);
+            console.log(`Error 1 ${e.message}`);
         }
     }
   return (
     <div className='signup'>
         <form onSubmit={handleSubmit}>
             <input type='text' name='username' placeholder='Enter an Username' onChange={handleChange}/>
-            <input type='text' name='email' placeholder='Enter an Email' onChange={handleChange}/>
-            <input type='text' name='password' placeholder='Enter the password' onChange={handleChange}/>
+            <input type='email' name='email' placeholder='Enter an Email' onChange={handleChange}/>
+            <input type='password' name='password' placeholder='Enter the password' onChange={handleChange}/>
             <button type="submit"> Sign Up </button>
             <p>{msg}</p>
         </form>
@@ -35,4 +42,4 @@ function SignUp() {
   )
 }
 
-export default SignUp
+export default Signup

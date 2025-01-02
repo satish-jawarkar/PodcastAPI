@@ -28,7 +28,7 @@ function SignIn ({setIsLoggedIn}) {
     <div className='SignIn'>
         <form onSubmit={handleSubmit}>
             <input type='text' name='email' placeholder='Enter your email!' onChange={handleChange}/>
-            <input type='text' name='password' placeholder='Enter your password!' onChange={handleChange}/>
+            <input type='password' name='password' placeholder='Enter your password!' onChange={handleChange}/>
             <button type='submit'>Log IN</button>
         </form>
     </div>
