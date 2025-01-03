@@ -1,6 +1,6 @@
 import './App.css';
 import { useState } from 'react';
-import react from 'react';
+// import react from 'react';
 import SignIn from './SignIn';
 
 import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
@@ -15,9 +15,9 @@ function App() {
       <Routes>
         <Route path='/signin1' element={<SignIn setIsLoggedIn = {setIsLoggedIn}/>}/>
         <Route path='/signup1' element={<Signup/>}/>
-        <Route path='/home' element={<Home/>}/>
+        {/* <Route path='/home' element={<Home/>}/> */}
 
-        <Route path='/Home' element={isLoggedIn ? <Home/> : <Navigate to="/signin"/> } />
+        <Route path='/home' element={isLoggedIn ? <Home/> : <Navigate to="/signin1"/> } />
       </Routes>
      </Router>
     </div>

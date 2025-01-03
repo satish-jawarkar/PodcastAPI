@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Select from 'react-select';
 import axios from 'axios';
+import './Home.css'
 function Home() {
     const genre = [
         {
@@ -62,6 +63,9 @@ function Home() {
                         <p>{podcast.description}</p>
                         <p><strong>Category:</strong> {podcast.category}</p>
                         <a href={podcast.source} target="_blank" rel="noopener noreferrer">Listen Now</a>
+                        <br/>
+                        <a href={podcast.itunes} target="_blank" rel="noopener noreferrer">Listen Now on iTunes</a>
+                        {/* <a href={podcast.source} target="_blank" rel="noopener noreferrer">Listen Now on </a> */}
                     </li>
                 ))
             ) : (

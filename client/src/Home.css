@@ -1,0 +1,117 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  /* Home Component Styles */
+  .homepage {
+    width: 100%;
+    max-width: 800px;
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    box-sizing: border-box;
+  }
+  
+  /* Search Bar Styles */
+  .search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar .react-select__control {
+    width: 100%;
+  }
+  
+  .search-bar button {
+    background-color: #007bff;
+    color: #ffffff;
+    font-size: 16px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .search-bar button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Podcast Content Styles */
+  .podcastContent ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .podcastContent li {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .podcastContent h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .podcastContent p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .podcastContent a {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  
+  .podcastContent a:hover {
+    color: #0056b3;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .homepage {
+      padding: 15px;
+      border-radius: 5px;
+    }
+  
+    .search-bar {
+      flex-direction: column;
+    }
+  
+    .search-bar button {
+      font-size: 14px;
+      padding: 8px 10px;
+    }
+  
+    .podcastContent h3 {
+      font-size: 16px;
+    }
+  
+    .podcastContent p,
+    .podcastContent a {
+      font-size: 12px;
+    }
+  }
+  
